@@ -5,8 +5,8 @@ import Quote from '@/components/Quote'
 
 Vue.use(Router)
 
-export default new Router({
-  mode: 'history',
+export const myRouter = new Router({
+  mode: 'abstract',
   routes: [
     {
       path: '/',
@@ -20,3 +20,12 @@ export default new Router({
     }
   ]
 })
+
+myRouter.replace('/');
+
+myRouter.beforeEach(function (to, from, next) {
+  window.scrollTo(0, 0);
+  next();
+});
+
+export default myRouter;
