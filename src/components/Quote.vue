@@ -33,7 +33,7 @@
                 var self = this;
 
                 try {
-                    axios.get("http://umorili.herokuapp.com/api/get?site=bash.im&name=bash&num=50")
+                    axios.get("https://umorili.herokuapp.com/api/get?site=bash.im&name=bash&num=50")
                             .then(function (response) {
                                 self.quotes = response.data;
 
