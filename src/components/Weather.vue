@@ -121,7 +121,7 @@
                     try {
                         axios.get("https://dataservice.accuweather.com/locations/v1/cities/geoposition/search", {
                             params: {
-                                apikey: 'BeoItrTRBw7aN1kC1t9rIhJviyNGAoKe',
+                                apikey: 'CMY92TQmrIlK8PcktrPASElvOoBtE1Lj',
                                 q: self.latitude + ',' + self.longitude,
                                 language: 'ru-ru'
                             }
@@ -158,17 +158,17 @@
                     if (self.duration == 'Now') {
                         console.log('Now');
 
-                        var weatherLink = "http://dataservice.accuweather.com/currentconditions/v1/" + this.currentCity.Key;
+                        var weatherLink = "https://dataservice.accuweather.com/currentconditions/v1/" + this.currentCity.Key;
                     }
                     else if (self.duration == '5') {
                         console.log('5');
 
-                        var weatherLink = "http://dataservice.accuweather.com/forecasts/v1/daily/5day//" + this.currentCity.Key;
+                        var weatherLink = "https://dataservice.accuweather.com/forecasts/v1/daily/5day//" + this.currentCity.Key;
                     }
 
                     axios.get(weatherLink, {
                         params: {
-                            apikey: 'BeoItrTRBw7aN1kC1t9rIhJviyNGAoKe',
+                            apikey: 'CMY92TQmrIlK8PcktrPASElvOoBtE1Lj',
                             language: 'ru-ru',
                             metric: true
                         }
@@ -180,7 +180,6 @@
                                     self.currentWeather = response.data[0];
                                 }
                                 else if (self.duration == '5') {
-                                    console.log('response.data.DailyForecasts', response.data.DailyForecasts);
                                     self.dailyForecasts = response.data.DailyForecasts;
 
                                     for (var i = 0; i < self.dailyForecasts.length; i++) {
@@ -189,10 +188,7 @@
                                         d.setUTCSeconds(utcSeconds);
 
                                         self.dailyForecasts[i].Date = ("0" + d.getDate()).slice(-2) + "." + ("0" + (d.getMonth() + 1)).slice(-2);
-                                        console.log('time', self.dailyForecasts[i].Date);
                                     }
-
-                                    console.log('self.dailyForecasts', self.dailyForecasts);
                                 }
 
 
@@ -226,9 +222,9 @@
                 var self = this;
 
                 try {
-                    axios.get("http://dataservice.accuweather.com/locations/v1/cities/autocomplete", {
+                    axios.get("https://dataservice.accuweather.com/locations/v1/cities/autocomplete", {
                         params: {
-                            apikey: 'BeoItrTRBw7aN1kC1t9rIhJviyNGAoKe',
+                            apikey: 'CMY92TQmrIlK8PcktrPASElvOoBtE1Lj',
                             q: self.searchCity,
                             language: 'ru-ru'
                         }
