@@ -94,7 +94,7 @@
         display: block;
         position: relative;
         width:30%;
-        min-width: 200px;
+        min-width: 300px;
         height: auto;
         padding: 20px;
         background: white;

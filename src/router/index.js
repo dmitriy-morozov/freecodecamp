@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
 import Quote from '@/components/Quote'
+import Weather from '@/components/Weather'
 
 Vue.use(Router)
 
@@ -17,6 +18,11 @@ export const myRouter = new Router({
       path: '/quote',
       name: 'Quote',
       component: Quote
+    },
+    {
+      path: '/weather',
+      name: 'Weather',
+      component: Weather
     }
   ]
 })

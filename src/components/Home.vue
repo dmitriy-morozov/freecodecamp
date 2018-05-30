@@ -6,6 +6,9 @@
             <li>
                 <router-link to="/quote">Random Quote Machine</router-link>
             </li>
+            <li>
+                <router-link to="/weather">Local Weather</router-link>
+            </li>
         </ul>
     </div>
 </template>
@@ -31,8 +34,8 @@
     }
 
     li {
-        display: inline-block;
-        margin: 0 10px;
+        display: block;
+        margin: 10px;
     }
 
     a {
