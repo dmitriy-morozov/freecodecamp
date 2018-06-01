@@ -3,11 +3,11 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Quote from '@/components/Quote'
 import Weather from '@/components/Weather'
+import Pomodoro from '@/components/Pomodoro'
 
 Vue.use(Router)
 
 export const myRouter = new Router({
-  mode: 'abstract',
   routes: [
     {
       path: '/',
@@ -23,6 +23,11 @@ export const myRouter = new Router({
       path: '/weather',
       name: 'Weather',
       component: Weather
+    },
+    {
+      path: '/pomodoro',
+      name: 'Pomodoro',
+      component: Pomodoro
     }
   ]
 })

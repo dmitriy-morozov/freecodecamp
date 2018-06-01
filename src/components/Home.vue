@@ -9,6 +9,9 @@
             <li>
                 <router-link to="/weather">Local Weather</router-link>
             </li>
+            <li>
+                <router-link to="/pomodoro">Pomodoro Timer</router-link>
+            </li>
         </ul>
     </div>
 </template>

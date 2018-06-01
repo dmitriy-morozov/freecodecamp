@@ -6,8 +6,8 @@
 
         <nav class="weather-nav">
             <ul>
-                <li @click="setDuration('Now')">Сейчас</li>
-                <li @click="setDuration('5')">На 5 дней</li>
+                <li :class="{active : duration == 'Now' }" @click="setDuration('Now')">Сейчас</li>
+                <li :class="{active : duration == '5' }" @click="setDuration('5')">На 5 дней</li>
             </ul>
 
             <input type="text" placeholder="Введите город" v-model="searchCity">
@@ -88,22 +88,22 @@
         name: 'Weather',
         data () {
             return {
+                searchCity: '',
                 currentCity: [],
+                cityList: [],
                 currentWeather: [],
                 dailyForecasts: [],
-                duration: 'Now',
                 latitude: '',
                 longitude: '',
                 temperatureType: 'Metric',
-                searchCity: '',
-                cityList: [],
+                duration: 'Now',
                 errorMessage: false,
                 errorApiMessage: false,
                 loading: false
             }
         },
         created: function () {
-            this.debouncedSearchCity = _.debounce(this.search, 1000)
+            this.debouncedSearchCity = _.debounce(this.search, 500)
         },
         mounted() {
             this.getGeolocation();
@@ -111,10 +111,9 @@
         methods: {
             getGeolocation: function () {
                 var self = this;
+                self.loading = true;
 
                 function success(position) {
-                    self.loading = true;
-
                     self.latitude = position.coords.latitude;
                     self.longitude = position.coords.longitude;
 
@@ -147,6 +146,7 @@
 
                 function error() {
                     self.errorMessage = true;
+                    self.loading = false;
                 }
 
                 navigator.geolocation.getCurrentPosition(success, error);
@@ -156,13 +156,9 @@
 
                 try {
                     if (self.duration == 'Now') {
-                        console.log('Now');
-
                         var weatherLink = "https://dataservice.accuweather.com/currentconditions/v1/" + this.currentCity.Key;
                     }
-                    else if (self.duration == '5') {
-                        console.log('5');
-
+                    else {
                         var weatherLink = "https://dataservice.accuweather.com/forecasts/v1/daily/5day//" + this.currentCity.Key;
                     }
 
@@ -174,12 +170,10 @@
                         }
                     })
                             .then(function (response) {
-                                console.log(response);
-
                                 if (self.duration == 'Now') {
                                     self.currentWeather = response.data[0];
                                 }
-                                else if (self.duration == '5') {
+                                else {
                                     self.dailyForecasts = response.data.DailyForecasts;
 
                                     for (var i = 0; i < self.dailyForecasts.length; i++) {
@@ -207,7 +201,7 @@
                 }
             },
             toggleType: function () {
-                if (this.temperatureType != 'Imperial') {
+                if (this.temperatureType == 'Metric') {
                     this.temperatureType = 'Imperial'
                 } else {
                     this.temperatureType = 'Metric'
@@ -251,7 +245,7 @@
             searchCity: function () {
                 this.debouncedSearchCity()
             }
-        },
+        }
     }
 </script>
 
@@ -268,12 +262,16 @@
 
     .weather-nav {
         width: 20%;
-        color:white;
+        color: white;
     }
 
     .weather-nav ul {
         padding: 0;
         list-style: none;
+    }
+
+    .weather-nav li.active {
+        color: #03A9F4;
     }
 
     .weather-nav li:hover,
