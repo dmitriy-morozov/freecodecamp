@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Quote from '@/components/Quote'
 import Weather from '@/components/Weather'
 import Pomodoro from '@/components/Pomodoro'
+import Github from '@/components/Github'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export const myRouter = new Router({
       path: '/pomodoro',
       name: 'Pomodoro',
       component: Pomodoro
+    },
+    {
+      path: '/github',
+      name: 'Github',
+      component: Github
     }
   ]
 })

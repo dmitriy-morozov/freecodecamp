@@ -1,7 +1,7 @@
 <template>
     <div class="hello">
         <img src="../assets/logo.png">
-        <h2>Freecodecamp challenges (Vue.js)</h2>
+        <h2>Vue.js challenges</h2>
         <ul>
             <li>
                 <router-link to="/quote">Random Quote Machine</router-link>
@@ -11,6 +11,9 @@
             </li>
             <li>
                 <router-link to="/pomodoro">Pomodoro Timer</router-link>
+            </li>
+            <li>
+                <router-link to="/github">Latest Commits</router-link>
             </li>
         </ul>
     </div>
