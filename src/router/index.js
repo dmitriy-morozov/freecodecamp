@@ -5,6 +5,7 @@ import Quote from '@/components/Quote'
 import Weather from '@/components/Weather'
 import Pomodoro from '@/components/Pomodoro'
 import Github from '@/components/Github'
+import Contacts from '@/components/Contacts'
 
 Vue.use(Router)
 
@@ -34,7 +35,13 @@ export const myRouter = new Router({
       path: '/github',
       name: 'Github',
       component: Github
+    },
+    {
+      path: '/contacts',
+      name: 'Contacts',
+      component: Contacts
     }
+
   ]
 })
 

@@ -15,6 +15,9 @@
             <li>
                 <router-link to="/github">Latest Commits</router-link>
             </li>
+            <li>
+                <router-link to="/contacts">Contact Manager</router-link>
+            </li>
         </ul>
     </div>
 </template>
