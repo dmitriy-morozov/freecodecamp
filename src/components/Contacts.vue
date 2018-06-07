@@ -38,9 +38,10 @@
 
                         <div class="contact-data">
                             <p>{{contact.name}}</p>
-                            <a v-if="contact.mobileTel" :href="`tel:${contact.mobileTel}`">{{contact.mobileTel}}</a>
-                            <a v-if="contact.workTel" :href="`tel:${contact.workTel}`">{{contact.workTel}}</a>
-                            <a v-if="contact.homeTel" :href="`tel:${contact.homeTel}`">{{contact.homeTel}}</a>
+                            <p v-if="contact.mobileTel">Mobile tel: <a :href="`tel:${contact.mobileTel}`">{{contact.mobileTel}}</a></p>
+                            <p v-if="contact.workTel">Work tel: <a :href="`tel:${contact.workTel}`">{{contact.workTel}}</a></p>
+                            <p v-if="contact.homeTel">Home tel: <a :href="`tel:${contact.homeTel}`">{{contact.homeTel}}</a></p>
+                            <p v-if="contact.groups">Group: {{contact.groups}}</p>
                         </div>
                     </div>
 
@@ -219,7 +220,7 @@
         },
         methods: {
             fetchContacts: function () {
-                var tempContacts = JSON.parse(localStorage.getItem(this.storageKey));
+                var tempContacts = JSON.parse(localStorage.getItem(this.storageKey) || '[]');
 
                 for (var i = 0; i < tempContacts.length; i++) {
                     if (tempContacts[i].isFavorite) {
@@ -402,7 +403,7 @@
     .contacts-list {
         position: relative;
         margin-top: 10px;
-        min-height: 300px;
+        min-height: 350px;
         max-height: 50vh;
         overflow-y: auto;
         background: white;
